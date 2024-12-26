@@ -45,7 +45,7 @@ El control de que se plantea es uno en cascada donde cada ADC comienza el muestr
 
 ## Screenshots
 
-![App Screenshot](https://github.com/AlbertoPelaez20/Proyecto_DAQ_neutrinos_study/blob/main/imagenes/Diagrama_de_bloques1.jpg?raw=true)
+![App Screenshot]([https://github.com/AlbertoPelaez20/Proyecto_DAQ_neutrinos_study/blob/main/imagenes/Diagrama_de_bloques1.jpg?raw=true](https://github.com/AlbertoPelaez20/Proyecto_DAQ_neutrinos_study/blob/main/imagenes/DIAGRAMA3.jpg?raw=true))
 
 
 ## Tech Stack
