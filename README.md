@@ -24,7 +24,7 @@ En este repositorio se encuentra la implementacion en VHDL de un sistema de aqui
 
 El diseño en VHDL debe considerar  el siguiente diagrama de bloques: 
 
-![App Screenshot](https://github.com/AlbertoPelaez20/Proyecto_DAQ_neutrinos_study/blob/main/imagenes/Diagrama_de_bloques1.jpg?raw=true)
+![App Screenshot](https://github.com/AlbertoPelaez20/Proyecto_DAQ_neutrinos_study/blob/main/imagenes/UTEC%20Neutrino%20detector%20design%20-%20v1.jpg?raw=true)
 
 - **Diseño del sistema**: El cuncionamiento de DAQ esta basado en el control en cascada de 8 ADCs de la marca Texas Instruments modelo **ADS7046** de 12-Bit, dos multiplexores **74CBTLV3257-Q100** y un DAC **MCP4725**. Los ADCs usan protocolo SPI mientras el DAC I2C. 
 
@@ -46,7 +46,7 @@ El control de que se plantea es uno en cascada donde cada ADC comienza el muestr
 ## Screenshots
 
 
-![DIAGRAMA2](https://github.com/AlbertoPelaez20/Proyecto_DAQ_neutrinos_study/blob/main/imagenes/Diagrama4.jpg?raw=true)
+![DIAGRAMA2](https://github.com/AlbertoPelaez20/Proyecto_DAQ_neutrinos_study/blob/main/imagenes/diagrama2.jpg?raw=true)
 
 
 ## Tech Stack
