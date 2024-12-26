@@ -1,0 +1,14 @@
+#-----------------------------------------------------------
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Wed Dec 25 18:44:35 2024
+# Process ID: 15832
+# Current directory: C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.runs/synth_1
+# Command line: vivado.exe -log DAQ_digital.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source DAQ_digital.tcl
+# Log file: C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.runs/synth_1/DAQ_digital.vds
+# Journal file: C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.runs/synth_1\vivado.jou
+# Running On: MSI, OS: Windows, CPU Frequency: 2592 MHz, CPU Physical cores: 6, Host memory: 34191 MB
+#-----------------------------------------------------------
+source DAQ_digital.tcl -notrace

@@ -1,0 +1,197 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
+| Date         : Wed Dec 25 18:48:06 2024
+| Host         : MSI running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file DAQ_digital_control_sets_placed.rpt
+| Design       : DAQ_digital
+| Device       : xc7a35t
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Total control sets                                       |   119 |
+|    Minimum number of control sets                        |   119 |
+|    Addition due to synthesis replication                 |     0 |
+|    Addition due to physical synthesis replication        |     0 |
+| Unused register locations in slices containing registers |   306 |
++----------------------------------------------------------+-------+
+* Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
+** Run report_qor_suggestions for automated merging and remapping suggestions
+
+
+2. Histogram
+------------
+
++--------------------+-------+
+|       Fanout       | Count |
++--------------------+-------+
+| Total control sets |   119 |
+| >= 0 to < 4        |    13 |
+| >= 4 to < 6        |    19 |
+| >= 6 to < 8        |     2 |
+| >= 8 to < 10       |    16 |
+| >= 10 to < 12      |     0 |
+| >= 12 to < 14      |     3 |
+| >= 14 to < 16      |    14 |
+| >= 16              |    52 |
++--------------------+-------+
+* Control sets can be remapped at either synth_design or opt_design
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |             160 |           64 |
+| No           | No                    | Yes                    |              35 |           10 |
+| No           | Yes                   | No                     |              55 |           15 |
+| Yes          | No                    | No                     |            1810 |          606 |
+| Yes          | No                    | Yes                    |              70 |           19 |
+| Yes          | Yes                   | No                     |             196 |           55 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++---------------------------------------+-------------------------------------------+------------------------------------+------------------+----------------+--------------+
+|              Clock Signal             |               Enable Signal               |          Set/Reset Signal          | Slice Load Count | Bel Load Count | Bels / Slice |
++---------------------------------------+-------------------------------------------+------------------------------------+------------------+----------------+--------------+
+|  I2C0/set0/ena_reg_i_2_n_0            |                                           |                                    |                1 |              1 |         1.00 |
+|  I2C0/set0/PS[0]                      |                                           |                                    |                1 |              1 |         1.00 |
+|  CI0/load_reg_i_1_n_0                 |                                           |                                    |                1 |              1 |         1.00 |
+|  clk_s                                | UART02/HABILITADOR_reg_n_0                |                                    |                1 |              1 |         1.00 |
+|  CI0/nibble1_reg_i_1_n_0              |                                           |                                    |                1 |              1 |         1.00 |
+|  CI0/nibble2_reg_i_1_n_0              |                                           |                                    |                1 |              1 |         1.00 |
+| ~CI1/FMS01/PS[0]                      |                                           |                                    |                1 |              1 |         1.00 |
+|  CI0/incrementa_direccion_reg_i_2_n_0 |                                           |                                    |                1 |              1 |         1.00 |
+|  CI1/FMS00/incrementa_iteraciones__0  |                                           |                                    |                1 |              1 |         1.00 |
+|  CI1/FMS00/CLK                        | CI1/pulse01/E[0]                          | CI1/FMS01/AR[0]                    |                1 |              2 |         2.00 |
+|  CI1/clk01/inst/clk_out3              |                                           | BTN_R_IBUF                         |                1 |              2 |         2.00 |
+|  CI1/clk01/inst/clk_out2              |                                           | BTN_R_IBUF                         |                1 |              2 |         2.00 |
+|  CI1/SPI_Instance4/CS4                |                                           | CI1/reset_contador                 |                1 |              3 |         3.00 |
+|  clk_s                                | MEM0/data_mem[6][3]_i_1_n_0               |                                    |                3 |              4 |         1.33 |
+|  clk_s                                | MEM0/data_mem[198][3]_i_1_n_0             |                                    |                4 |              4 |         1.00 |
+|  clk_s                                | UART02/HABILITADOR_reg_n_0                | UART02/uart_01/txData[5]_i_1_n_0   |                1 |              4 |         4.00 |
+|  clk_s                                | MEM0/data_mem[208][3]_i_1_n_0             |                                    |                2 |              4 |         2.00 |
+|  clk_s                                | CI0/MemWrite_prev_reg                     | CI1/pulse01/enable_active_reg_0[0] |                1 |              4 |         4.00 |
+|  clk_s                                | MEM0/data_mem[14][3]_i_1_n_0              |                                    |                4 |              4 |         1.00 |
+|  clk_s                                | MEM0/data_mem[238][3]_i_1_n_0             | MEM0/data_mem[234][2]_i_1_n_0      |                1 |              5 |         5.00 |
+| ~CI1/clk01/inst/clk_out1              | CI1/FMS00/FSM_onehot_PS_reg[7]_0[0]       | CI1/SPI_Instance4/last_bit         |                1 |              5 |         5.00 |
+| ~CI1/clk01/inst/clk_out1              | CI1/FMS00/FSM_onehot_PS_reg[3]_0[0]       | CI1/SPI_Instance2/last_bit         |                2 |              5 |         2.50 |
+| ~CI1/clk01/inst/clk_out1              | CI1/FMS00/INT_ss_n_reg[0]                 | CI1/SPI_Instance1/last_bit_0       |                1 |              5 |         5.00 |
+| ~CI1/clk01/inst/clk_out1              | CI1/FMS00/FSM_onehot_PS_reg[5]_0[0]       | CI1/SPI_Instance3/last_bit         |                2 |              5 |         2.50 |
+|  clk_s                                | MEM0/data_mem[174][3]_i_1_n_0             | MEM0/data_mem[168][1]_i_1_n_0      |                1 |              5 |         5.00 |
+|  clk_s                                | MEM0/data_mem[174][3]_i_1_n_0             | MEM0/data_mem[168][0]_i_1_n_0      |                1 |              5 |         5.00 |
+|  clk_s                                | MEM0/data_mem[238][3]_i_1_n_0             | MEM0/data_mem[234][1]_i_1_n_0      |                2 |              5 |         2.50 |
+|  clk_s                                | MEM0/data_mem[174][3]_i_1_n_0             | MEM0/data_mem[168][3]_i_1_n_0      |                1 |              5 |         5.00 |
+|  clk_s                                | MEM0/data_mem[174][3]_i_1_n_0             | MEM0/data_mem[168][2]_i_1_n_0      |                1 |              5 |         5.00 |
+|  clk_s                                | MEM0/data_mem[238][3]_i_1_n_0             | MEM0/data_mem[234][0]_i_1_n_0      |                1 |              5 |         5.00 |
+|  clk_s                                | UART02/uart_01/CUENTA2                    |                                    |                2 |              5 |         2.50 |
+|  clk_s                                | MEM0/data_mem[238][3]_i_1_n_0             | MEM0/data_mem[234][3]_i_1_n_0      |                1 |              5 |         5.00 |
+|  clk_s                                | UART01/uart_01/CUENTA2                    |                                    |                2 |              6 |         3.00 |
+|  clk_s_0                              | I2C0/i2c/busy1                            |                                    |                2 |              7 |         3.50 |
+|  I2C0/set0/data_wr_reg[7]_i_2_n_0     |                                           |                                    |                2 |              8 |         4.00 |
+|  CI1/TIMER4/Count0/CLK0_out           | CI1/FMS00/EN_timers[2]                    | CI1/FMS00/AR[0]                    |                2 |              8 |         4.00 |
+|  clk_s                                | MEM0/data_mem[40][3]_i_1_n_0              |                                    |                3 |              8 |         2.67 |
+|  clk_s                                | CI0/nibble1                               | CI0/nibble_sup[7]_i_1_n_0          |                1 |              8 |         8.00 |
+|  CI1/FMS00/incrementa_iteraciones     |                                           | CI1/FMS00/Reset_num_iteracion      |                2 |              8 |         4.00 |
+|  clk_s_0                              | I2C0/i2c/addr_rw0                         |                                    |                3 |              8 |         2.67 |
+|  clk_s                                | MEM0/data_mem[68][3]_i_1_n_0              |                                    |                2 |              8 |         4.00 |
+|  clk_s                                | CI0/nibble2                               | CI0/nibble_inf[7]_i_1_n_0          |                2 |              8 |         4.00 |
+|  CI1/TIMER3/Count0/CLK0_out           | CI1/FMS00/EN_timers[1]                    | CI1/FMS00/AR[0]                    |                3 |              8 |         2.67 |
+|  clk_s                                | MEM0/data_mem[242][3]_i_1_n_0             |                                    |                3 |              8 |         2.67 |
+|  clk_s                                | MEM0/data_mem[130][3]_i_1_n_0             |                                    |                2 |              8 |         4.00 |
+|  clk_s                                | UART01/dato_a_enviar[7]_i_2_n_0           | UART01/dato_a_enviar[7]_i_1_n_0    |                8 |              8 |         1.00 |
+|  clk_s                                | UART01/HABILITADOR_reg_n_0                |                                    |                2 |              8 |         4.00 |
+|  CI0/div0/clk_out                     |                                           |                                    |                2 |              8 |         4.00 |
+|  CI1/TIMER2/Count0/CLK0_out           | CI1/FMS00/EN_timers[0]                    | CI1/FMS00/AR[0]                    |                2 |              8 |         4.00 |
+|  CI1/TIMER1/Count0/CLK0_out           | CI1/FMS00/E[0]                            | CI1/FMS00/AR[0]                    |                2 |              8 |         4.00 |
+|  clk_s                                | MEM0/data_mem[54][3]_i_1_n_0              |                                    |                4 |             12 |         3.00 |
+|  clk_s                                | MEM0/data_mem[158][3]_i_1_n_0             |                                    |                7 |             12 |         1.71 |
+|  CI1/clk01/inst/clk_out3              |                                           |                                    |                5 |             13 |         2.60 |
+|  clk_s                                | UART01/uart_01/DIR                        |                                    |                4 |             14 |         3.50 |
+|  clk_s                                | Debouncer0/count0_carry__0_n_3            | Debouncer0/count_start             |                4 |             14 |         3.50 |
+|  clk_s                                | Debouncer1/count0_carry__0_n_3            | Debouncer1/count_start             |                4 |             14 |         3.50 |
+|  clk_s                                | Debouncer2/count0_carry__0_n_3            | Debouncer2/count_start             |                4 |             14 |         3.50 |
+|  clk_s                                |                                           | UART01/uart_01/bitTmr              |                4 |             14 |         3.50 |
+|  clk_s                                |                                           | UART02/uart_01/bitTmr              |                4 |             14 |         3.50 |
+| ~CI1/clk01/inst/clk_out1              | CI1/SPI_Instance4/rxBuffer[14]_i_1__2_n_0 |                                    |                5 |             15 |         3.00 |
+| ~CI1/clk01/inst/clk_out1              | CI1/SPI_Instance4/rx[14]_i_1__2_n_0       |                                    |                4 |             15 |         3.75 |
+| ~CI1/clk01/inst/clk_out1              | CI1/SPI_Instance2/rx[14]_i_1__0_n_0       |                                    |                5 |             15 |         3.00 |
+| ~CI1/clk01/inst/clk_out1              | CI1/SPI_Instance2/rxBuffer[14]_i_1__0_n_0 |                                    |                4 |             15 |         3.75 |
+| ~CI1/clk01/inst/clk_out1              | CI1/SPI_Instance1/rx[14]_i_1_n_0          |                                    |                3 |             15 |         5.00 |
+| ~CI1/clk01/inst/clk_out1              | CI1/SPI_Instance3/rx[14]_i_1__1_n_0       |                                    |                5 |             15 |         3.00 |
+| ~CI1/clk01/inst/clk_out1              | CI1/SPI_Instance1/rxBuffer[14]_i_1_n_0    |                                    |                4 |             15 |         3.75 |
+| ~CI1/clk01/inst/clk_out1              | CI1/SPI_Instance3/rxBuffer[14]_i_1__1_n_0 |                                    |                5 |             15 |         3.00 |
+|  clk_s                                | MEM0/data_mem[213][3]_i_1_n_0             |                                    |                5 |             16 |         3.20 |
+|  clk_s                                | MEM0/data_mem[169][3]_i_1_n_0             |                                    |                7 |             16 |         2.29 |
+|  clk_s                                | MEM0/data_mem[29][3]_i_1_n_0              |                                    |                7 |             16 |         2.29 |
+|  CI0/temp_word__0                     |                                           |                                    |                4 |             16 |         4.00 |
+|  clk_s                                | MEM0/data_mem[25][3]_i_1_n_0              |                                    |               10 |             16 |         1.60 |
+|  clk_s                                | MEM0/data_mem[179][3]_i_1_n_0             |                                    |                6 |             16 |         2.67 |
+|  clk_s                                | MEM0/data_mem[184][3]_i_1_n_0             |                                    |                8 |             16 |         2.00 |
+|  clk_s                                | MEM0/data_mem[153][3]_i_1_n_0             |                                    |                6 |             16 |         2.67 |
+|  clk_s_0                              |                                           |                                    |                9 |             17 |         1.89 |
+| ~CI1/clk01/inst/clk_out1              |                                           |                                    |                9 |             20 |         2.22 |
+|  clk_s                                | MEM0/data_mem[128][3]_i_1_n_0             |                                    |               10 |             20 |         2.00 |
+|  clk_s                                | MEM0/data_mem[224][3]_i_1_n_0             |                                    |                9 |             20 |         2.22 |
+|  clk_s                                | MEM0/data_mem[46][3]_i_1_n_0              |                                    |                7 |             20 |         2.86 |
+|  clk_s                                | MEM0/data_mem[210][3]_i_1_n_0             |                                    |                4 |             20 |         5.00 |
+|  clk_s                                | MEM0/data_mem[95][3]_i_1_n_0              |                                    |                9 |             20 |         2.22 |
+|  clk_s                                | MEM0/data_mem[105][3]_i_1_n_0             |                                    |                9 |             20 |         2.22 |
+|  clk_s                                | MEM0/data_mem[100][3]_i_1_n_0             |                                    |                8 |             20 |         2.50 |
+|  clk_s                                | MEM0/data_mem[83][3]_i_1_n_0              |                                    |                7 |             20 |         2.86 |
+|  CI0/incrementa_direccion             |                                           | CI0/Reset_puntero                  |                5 |             20 |         4.00 |
+|  clk_s                                | MEM0/data_mem[113][3]_i_1_n_0             |                                    |               10 |             24 |         2.40 |
+|  CI0/max_value_reg[15]_i_2_n_0        |                                           |                                    |                6 |             24 |         4.00 |
+|  clk_s                                | MEM0/data_mem[195][3]_i_1_n_0             |                                    |               11 |             24 |         2.18 |
+|  clk_s                                | MEM0/data_mem[149][3]_i_1_n_0             |                                    |                9 |             24 |         2.67 |
+|  clk_s                                | CI0/load                                  |                                    |                4 |             24 |         6.00 |
+|  clk_s                                |                                           | I2C0/div0/clear                    |                7 |             27 |         3.86 |
+|  clk_s                                | MEM0/data_mem[163][3]_i_1_n_0             |                                    |                9 |             28 |         3.11 |
+|  clk_s                                | MEM0/data_mem[227][3]_i_1_n_0             |                                    |                8 |             28 |         3.50 |
+|  clk_s                                | MEM0/data_mem[126][3]_i_1_n_0             |                                    |                9 |             28 |         3.11 |
+|  clk_s                                | MEM0/data_mem[238][3]_i_1_n_0             |                                    |               12 |             28 |         2.33 |
+|  clk_s                                | MEM0/data_mem[55][3]_i_1_n_0              |                                    |                9 |             28 |         3.11 |
+|  clk_s                                | MEM0/data_mem[174][3]_i_1_n_0             |                                    |               12 |             32 |         2.67 |
+|  busy_s                               | I2C0/i2c/busy_cnt0                        | I2C0/set0/busy_cnt[0]_i_3_n_0      |                8 |             32 |         4.00 |
+|  clk_s                                | UART02/uart_01/bitIndex                   | UART02/uart_01/READY               |                8 |             33 |         4.12 |
+|  clk_s                                | UART01/uart_01/bitIndex                   | UART01/uart_01/READY               |                8 |             33 |         4.12 |
+|  clk_s                                | MEM0/data_mem[240][3]_i_1_n_0             |                                    |               15 |             40 |         2.67 |
+|  clk_s                                | MEM0/data_mem[156][3]_i_1_n_0             |                                    |               12 |             44 |         3.67 |
+|  clk_s                                | MEM0/data_mem[117][3]_i_1_n_0             |                                    |               13 |             44 |         3.38 |
+|  clk_s                                |                                           |                                    |               19 |             46 |         2.42 |
+|  clk_s                                | MEM0/data_mem[253][3]_i_1_n_0             |                                    |               12 |             48 |         4.00 |
+|  clk_s                                | MEM0/data_mem[94][3]_i_1_n_0              |                                    |               18 |             56 |         3.11 |
+|  clk_s                                | MEM0/data_mem[63][3]_i_1_n_0              |                                    |               19 |             56 |         2.95 |
+|  clk_s                                | MEM0/data_mem[111][3]_i_1_n_0             |                                    |               15 |             56 |         3.73 |
+|  clk_s                                | MEM0/data_mem[223][3]_i_1_n_0             |                                    |               21 |             56 |         2.67 |
+|  CI1/clk01/inst/clk_out3              | CI1/FMS00/R050                            |                                    |               11 |             60 |         5.45 |
+|  CI1/clk01/inst/clk_out3              | CI1/FMS00/R010                            |                                    |               14 |             60 |         4.29 |
+|  clk_s                                | MEM0/data_mem[31][3]_i_1_n_0              |                                    |               20 |             64 |         3.20 |
+|  clk_s                                | MEM0/data_mem[190][3]_i_1_n_0             |                                    |               25 |             64 |         2.56 |
+|  clk_s                                | MEM0/data_mem[143][3]_i_1_n_0             |                                    |               25 |             68 |         2.72 |
+|  clk_s                                | MEM0/data_mem[207][3]_i_1_n_0             |                                    |               22 |             68 |         3.09 |
+|  clk_s                                | MEM0/data_mem[47][3]_i_1_n_0              |                                    |               25 |             68 |         2.72 |
+|  clk_s                                | MEM0/data_mem[79][3]_i_1_n_0              |                                    |               25 |             88 |         3.52 |
+|  clk_s                                | MEM0/data_mem[15][3]_i_1_n_0              |                                    |               24 |             89 |         3.71 |
++---------------------------------------+-------------------------------------------+------------------------------------+------------------+----------------+--------------+
+
+

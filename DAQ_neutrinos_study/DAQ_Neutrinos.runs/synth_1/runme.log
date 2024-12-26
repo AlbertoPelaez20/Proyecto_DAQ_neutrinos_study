@@ -1,0 +1,493 @@
+
+*** Running vivado
+    with args -log DAQ_digital.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source DAQ_digital.tcl
+
+
+ECHO est  desactivado.
+ECHO est  desactivado.
+
+****** Vivado v2023.2 (64-bit)
+  **** SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
+  **** IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+  **** SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source DAQ_digital.tcl -notrace
+create_project: Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 488.648 ; gain = 219.742
+Command: read_checkpoint -auto_incremental -incremental {C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/utils_1/imports/synth_1/DAQ_digital.dcp}
+INFO: [Vivado 12-5825] Read reference checkpoint from C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/utils_1/imports/synth_1/DAQ_digital.dcp for incremental synthesis
+INFO: [Vivado 12-7989] Please ensure there are no constraint changes
+Command: synth_design -top DAQ_digital -part xc7a35tcpg236-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Device 21-403] Loading part xc7a35tcpg236-1
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 22928
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1331.402 ; gain = 440.527
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'DAQ_digital' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/DAQ_digital.vhd:68]
+INFO: [Synth 8-113] binding component instance 'CLK_buf1_inst' to cell 'BUFG' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/DAQ_digital.vhd:164]
+INFO: [Synth 8-3491] module 'button_debounce' declared at 'C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/button_debounce.vhd:11' bound to instance 'Debouncer0' of component 'button_debounce' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/DAQ_digital.vhd:171]
+INFO: [Synth 8-638] synthesizing module 'button_debounce' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/button_debounce.vhd:21]
+INFO: [Synth 8-256] done synthesizing module 'button_debounce' (0#1) [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/button_debounce.vhd:21]
+INFO: [Synth 8-3491] module 'Interface_DAC' declared at 'C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/Interface_DAC.vhd:10' bound to instance 'I2C0' of component 'Interface_DAC' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/DAQ_digital.vhd:177]
+INFO: [Synth 8-638] synthesizing module 'Interface_DAC' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/Interface_DAC.vhd:20]
+INFO: [Synth 8-3491] module 'Clock_divisor' declared at 'C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/Clock_divisor.vhd:13' bound to instance 'div0' of component 'Clock_divisor' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/Interface_DAC.vhd:77]
+INFO: [Synth 8-638] synthesizing module 'Clock_divisor' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/Clock_divisor.vhd:20]
+INFO: [Synth 8-256] done synthesizing module 'Clock_divisor' (0#1) [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/Clock_divisor.vhd:20]
+	Parameter input_clk bound to: 50000000 - type: integer 
+	Parameter bus_clk bound to: 400000 - type: integer 
+INFO: [Synth 8-3491] module 'i2c_master' declared at 'C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/i2c_master.vhd:10' bound to instance 'i2c' of component 'i2c_master' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/Interface_DAC.vhd:87]
+INFO: [Synth 8-638] synthesizing module 'i2c_master' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/i2c_master.vhd:28]
+	Parameter input_clk bound to: 50000000 - type: integer 
+	Parameter bus_clk bound to: 400000 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'i2c_master' (0#1) [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/i2c_master.vhd:28]
+INFO: [Synth 8-3491] module 'SetDAC' declared at 'C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/SetDAC.vhd:11' bound to instance 'set0' of component 'SetDAC' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/Interface_DAC.vhd:109]
+INFO: [Synth 8-638] synthesizing module 'SetDAC' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/SetDAC.vhd:25]
+WARNING: [Synth 8-2897] clock signal used as data [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/SetDAC.vhd:75]
+WARNING: [Synth 8-2897] clock signal used as data [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/SetDAC.vhd:75]
+WARNING: [Synth 8-2897] clock signal used as data [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/SetDAC.vhd:75]
+WARNING: [Synth 8-2897] clock signal used as data [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/SetDAC.vhd:75]
+WARNING: [Synth 8-2897] clock signal used as data [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/SetDAC.vhd:75]
+INFO: [Synth 8-256] done synthesizing module 'SetDAC' (0#1) [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/SetDAC.vhd:25]
+INFO: [Synth 8-256] done synthesizing module 'Interface_DAC' (0#1) [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/Interface_DAC.vhd:20]
+INFO: [Synth 8-3491] module 'button_debounce' declared at 'C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/button_debounce.vhd:11' bound to instance 'Debouncer1' of component 'button_debounce' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/DAQ_digital.vhd:187]
+INFO: [Synth 8-3491] module 'UART_MATLAB' declared at 'C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/UART_MATLAB.vhd:13' bound to instance 'UART01' of component 'UART_MATLAB' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/DAQ_digital.vhd:194]
+INFO: [Synth 8-638] synthesizing module 'UART_MATLAB' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/UART_MATLAB.vhd:21]
+INFO: [Synth 8-3491] module 'UART_TX' declared at 'C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/UART_TX.vhd:42' bound to instance 'uart_01' of component 'UART_TX' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/UART_MATLAB.vhd:71]
+INFO: [Synth 8-638] synthesizing module 'UART_TX' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/UART_TX.vhd:51]
+INFO: [Synth 8-256] done synthesizing module 'UART_TX' (0#1) [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/UART_TX.vhd:51]
+INFO: [Synth 8-256] done synthesizing module 'UART_MATLAB' (0#1) [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/UART_MATLAB.vhd:21]
+	Parameter DATA_WIDTH bound to: 12 - type: integer 
+	Parameter ADDR_WIDTH bound to: 8 - type: integer 
+INFO: [Synth 8-3491] module 'memory_buffer' declared at 'C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/memory_buffer.vhd:12' bound to instance 'MEM0' of component 'memory_buffer' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/DAQ_digital.vhd:209]
+INFO: [Synth 8-638] synthesizing module 'memory_buffer' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/memory_buffer.vhd:33]
+	Parameter DATA_WIDTH bound to: 12 - type: integer 
+	Parameter ADDR_WIDTH bound to: 8 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'memory_buffer' (0#1) [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/memory_buffer.vhd:33]
+INFO: [Synth 8-3491] module 'feature_extraction' declared at 'C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/feature_extraction.vhd:12' bound to instance 'CI0' of component 'feature_extraction' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/DAQ_digital.vhd:236]
+INFO: [Synth 8-638] synthesizing module 'feature_extraction' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/feature_extraction.vhd:25]
+INFO: [Synth 8-3491] module 'Clock_divisor' declared at 'C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/Clock_divisor.vhd:13' bound to instance 'div0' of component 'Clock_divisor' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/feature_extraction.vhd:73]
+INFO: [Synth 8-226] default block is never used [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/feature_extraction.vhd:99]
+INFO: [Synth 8-256] done synthesizing module 'feature_extraction' (0#1) [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/feature_extraction.vhd:25]
+INFO: [Synth 8-3491] module 'ADCs_modules' declared at 'C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/ADCs_modules.vhd:13' bound to instance 'CI1' of component 'ADCs_modules' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/DAQ_digital.vhd:249]
+INFO: [Synth 8-638] synthesizing module 'ADCs_modules' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/ADCs_modules.vhd:28]
+INFO: [Synth 8-3491] module 'clk_wiz_0' declared at 'C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.runs/synth_1/.Xil/Vivado-15832-MSI/realtime/clk_wiz_0_stub.vhdl:6' bound to instance 'clk01' of component 'clk_wiz_0' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/ADCs_modules.vhd:154]
+INFO: [Synth 8-638] synthesizing module 'clk_wiz_0' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.runs/synth_1/.Xil/Vivado-15832-MSI/realtime/clk_wiz_0_stub.vhdl:18]
+INFO: [Synth 8-3491] module 'FMS_SPI_Control' declared at 'C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/FMS_SPI_Control.vhd:11' bound to instance 'FMS00' of component 'FMS_SPI_Control' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/ADCs_modules.vhd:169]
+INFO: [Synth 8-638] synthesizing module 'FMS_SPI_Control' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/FMS_SPI_Control.vhd:28]
+INFO: [Synth 8-256] done synthesizing module 'FMS_SPI_Control' (0#1) [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/FMS_SPI_Control.vhd:28]
+INFO: [Synth 8-3491] module 'SingleShotPulse' declared at 'C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/SingleShotPulse.vhd:10' bound to instance 'pulse01' of component 'SingleShotPulse' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/ADCs_modules.vhd:226]
+INFO: [Synth 8-638] synthesizing module 'SingleShotPulse' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/SingleShotPulse.vhd:19]
+INFO: [Synth 8-256] done synthesizing module 'SingleShotPulse' (0#1) [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/SingleShotPulse.vhd:19]
+INFO: [Synth 8-3491] module 'FMS_ADCs_Readings' declared at 'C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/FMS_ADCs_Readings.vhd:11' bound to instance 'FMS01' of component 'FMS_ADCs_Readings' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/ADCs_modules.vhd:240]
+INFO: [Synth 8-638] synthesizing module 'FMS_ADCs_Readings' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/FMS_ADCs_Readings.vhd:21]
+INFO: [Synth 8-256] done synthesizing module 'FMS_ADCs_Readings' (0#1) [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/FMS_ADCs_Readings.vhd:21]
+INFO: [Synth 8-3491] module 'timer' declared at 'C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/timer.vhd:9' bound to instance 'TIMER1' of component 'timer' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/ADCs_modules.vhd:262]
+INFO: [Synth 8-638] synthesizing module 'timer' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/timer.vhd:17]
+INFO: [Synth 8-3491] module 'contador1' declared at 'C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/contador1.vhd:5' bound to instance 'Count0' of component 'contador1' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/timer.vhd:33]
+INFO: [Synth 8-638] synthesizing module 'contador1' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/contador1.vhd:11]
+INFO: [Synth 8-256] done synthesizing module 'contador1' (0#1) [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/contador1.vhd:11]
+INFO: [Synth 8-256] done synthesizing module 'timer' (0#1) [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/timer.vhd:17]
+INFO: [Synth 8-3491] module 'timer' declared at 'C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/timer.vhd:9' bound to instance 'TIMER2' of component 'timer' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/ADCs_modules.vhd:268]
+INFO: [Synth 8-3491] module 'timer' declared at 'C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/timer.vhd:9' bound to instance 'TIMER3' of component 'timer' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/ADCs_modules.vhd:274]
+INFO: [Synth 8-3491] module 'timer' declared at 'C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/timer.vhd:9' bound to instance 'TIMER4' of component 'timer' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/ADCs_modules.vhd:280]
+	Parameter data_length bound to: 15 - type: integer 
+INFO: [Synth 8-3491] module 'Interface_SPI' declared at 'C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/Interface_SPI.vhd:15' bound to instance 'SPI_Instance1' of component 'Interface_SPI' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/ADCs_modules.vhd:290]
+INFO: [Synth 8-638] synthesizing module 'Interface_SPI' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/Interface_SPI.vhd:36]
+	Parameter data_length bound to: 15 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'Interface_SPI' (0#1) [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/Interface_SPI.vhd:36]
+	Parameter data_length bound to: 15 - type: integer 
+INFO: [Synth 8-3491] module 'Interface_SPI' declared at 'C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/Interface_SPI.vhd:15' bound to instance 'SPI_Instance2' of component 'Interface_SPI' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/ADCs_modules.vhd:311]
+	Parameter data_length bound to: 15 - type: integer 
+INFO: [Synth 8-3491] module 'Interface_SPI' declared at 'C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/Interface_SPI.vhd:15' bound to instance 'SPI_Instance3' of component 'Interface_SPI' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/ADCs_modules.vhd:331]
+	Parameter data_length bound to: 15 - type: integer 
+INFO: [Synth 8-3491] module 'Interface_SPI' declared at 'C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/Interface_SPI.vhd:15' bound to instance 'SPI_Instance4' of component 'Interface_SPI' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/ADCs_modules.vhd:356]
+INFO: [Synth 8-226] default block is never used [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/ADCs_modules.vhd:389]
+INFO: [Synth 8-256] done synthesizing module 'ADCs_modules' (0#1) [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/ADCs_modules.vhd:28]
+INFO: [Synth 8-3491] module 'button_debounce' declared at 'C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/button_debounce.vhd:11' bound to instance 'Debouncer2' of component 'button_debounce' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/DAQ_digital.vhd:285]
+INFO: [Synth 8-3491] module 'UART_features' declared at 'C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/UART_features.vhd:15' bound to instance 'UART02' of component 'UART_features' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/DAQ_digital.vhd:293]
+INFO: [Synth 8-638] synthesizing module 'UART_features' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/UART_features.vhd:24]
+INFO: [Synth 8-3491] module 'UART_TX' declared at 'C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/UART_TX.vhd:42' bound to instance 'uart_01' of component 'UART_TX' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/UART_features.vhd:78]
+INFO: [Synth 8-256] done synthesizing module 'UART_features' (0#1) [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/UART_features.vhd:24]
+INFO: [Synth 8-256] done synthesizing module 'DAQ_digital' (0#1) [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/DAQ_digital.vhd:68]
+WARNING: [Synth 8-4767] Trying to implement RAM 'data_mem_reg' in registers. Block RAM or DRAM implementation is not possible; see log for reasons.
+Reason is one or more of the following :
+	1: RAM has multiple writes via different ports in same process. If RAM inferencing intended, write to one port per process. 
+	2: Unable to determine number of words or word size in RAM. 
+	3: No valid read/write found for RAM. 
+RAM "data_mem_reg" dissolved into registers
+WARNING: [Synth 8-4767] Trying to implement RAM 'data_mem2_reg' in registers. Block RAM or DRAM implementation is not possible; see log for reasons.
+Reason is one or more of the following :
+	1: RAM has multiple writes via different ports in same process. If RAM inferencing intended, write to one port per process. 
+	2: Unable to determine number of words or word size in RAM. 
+	3: No valid read/write found for RAM. 
+RAM "data_mem2_reg" dissolved into registers
+WARNING: [Synth 8-7129] Port UART1_RX in module DAQ_digital is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 1833.508 ; gain = 942.633
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1833.508 ; gain = 942.633
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1833.508 ; gain = 942.633
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.690 . Memory (MB): peak = 1833.508 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [c:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc] for cell 'CI1/clk01'
+Finished Parsing XDC File [c:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc] for cell 'CI1/clk01'
+Parsing XDC File [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/constrs_1/new/bassy3.xdc]
+Finished Parsing XDC File [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/constrs_1/new/bassy3.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/constrs_1/new/bassy3.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/DAQ_digital_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/DAQ_digital_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.007 . Memory (MB): peak = 1945.293 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Acceso denegado.
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.139 . Memory (MB): peak = 1945.293 ; gain = 0.000
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:40 ; elapsed = 00:00:40 . Memory (MB): peak = 1945.293 ; gain = 1054.418
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a35tcpg236-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:40 ; elapsed = 00:00:40 . Memory (MB): peak = 1945.293 ; gain = 1054.418
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property KEEP_HIERARCHY = SOFT for CI1/clk01. (constraint file  auto generated constraint).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:40 ; elapsed = 00:00:40 . Memory (MB): peak = 1945.293 ; gain = 1054.418
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'i2c_master'
+INFO: [Synth 8-802] inferred FSM for state register 'txState_reg' in module 'UART_TX'
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'UART_MATLAB'
+INFO: [Synth 8-802] inferred FSM for state register 'PS_reg' in module 'feature_extraction'
+INFO: [Synth 8-802] inferred FSM for state register 'PS_reg' in module 'FMS_SPI_Control'
+INFO: [Synth 8-802] inferred FSM for state register 'PS_reg' in module 'FMS_ADCs_Readings'
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'UART_features'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                   ready |                        000000001 |                             0000
+                   start |                        000000010 |                             0001
+                 command |                        000000100 |                             0010
+                slv_ack1 |                        000001000 |                             0011
+                      wr |                        000010000 |                             0100
+                slv_ack2 |                        000100000 |                             0110
+                      rd |                        001000000 |                             0101
+                mstr_ack |                        010000000 |                             0111
+                    stop |                        100000000 |                             1000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'one-hot' in module 'i2c_master'
+WARNING: [Synth 8-327] inferring latch for variable 'ena_reg' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/SetDAC.vhd:61]
+WARNING: [Synth 8-327] inferring latch for variable 'addr_reg' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/SetDAC.vhd:63]
+WARNING: [Synth 8-327] inferring latch for variable 'rw_reg' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/SetDAC.vhd:83]
+WARNING: [Synth 8-327] inferring latch for variable 'data_wr_reg' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/SetDAC.vhd:64]
+WARNING: [Synth 8-327] inferring latch for variable 'busy_prev_reg' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/SetDAC.vhd:73]
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                     rdy |                               00 |                               00
+                load_bit |                               01 |                               01
+                send_bit |                               10 |                               10
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'txState_reg' using encoding 'sequential' in module 'UART_TX'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    idle |                              000 |                              000
+               load_data |                              001 |                              001
+               send_data |                              010 |                              010
+              wait_start |                              011 |                              011
+              wait_ready |                              100 |                              100
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'UART_MATLAB'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    idle |                         00000001 |                              000
+           load_adrress1 |                         00000010 |                              001
+            read_nibble1 |                         00000100 |                              011
+           load_adrress2 |                         00001000 |                              010
+            read_nibble2 |                         00010000 |                              100
+                 extraer |                         00100000 |                              101
+                 compare |                         01000000 |                              110
+                  finish |                         10000000 |                              111
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'PS_reg' using encoding 'one-hot' in module 'feature_extraction'
+WARNING: [Synth 8-327] inferring latch for variable 'incrementa_direccion_reg' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/feature_extraction.vhd:104]
+WARNING: [Synth 8-327] inferring latch for variable 'temp_word_reg' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/feature_extraction.vhd:145]
+WARNING: [Synth 8-327] inferring latch for variable 'max_value_reg' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/feature_extraction.vhd:106]
+WARNING: [Synth 8-327] inferring latch for variable 'load_reg' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/feature_extraction.vhd:103]
+WARNING: [Synth 8-327] inferring latch for variable 'max_address_reg' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/feature_extraction.vhd:107]
+WARNING: [Synth 8-327] inferring latch for variable 'nibble2_reg' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/feature_extraction.vhd:131]
+WARNING: [Synth 8-327] inferring latch for variable 'nibble1_reg' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/feature_extraction.vhd:119]
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    idle |                      00000000001 |                             0000
+             iniciar_sp1 |                      00000000010 |                             0001
+             wait_timer1 |                      00000000100 |                             0010
+             iniciar_sp2 |                      00000001000 |                             0011
+             wait_timer2 |                      00000010000 |                             0100
+             iniciar_sp3 |                      00000100000 |                             0101
+             wait_timer3 |                      00001000000 |                             0110
+             iniciar_sp4 |                      00010000000 |                             0111
+             wait_timer4 |                      00100000000 |                             1000
+              all_cs_low |                      01000000000 |                             1001
+          complete_reset |                      10000000000 |                             1010
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'PS_reg' using encoding 'one-hot' in module 'FMS_SPI_Control'
+WARNING: [Synth 8-327] inferring latch for variable 'incrementa_iteraciones_reg' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/FMS_SPI_Control.vhd:178]
+WARNING: [Synth 8-327] inferring latch for variable 'GUARDAR_reg' [C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.srcs/sources_1/new/FMS_ADCs_Readings.vhd:37]
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                stand_by |                               00 |                               00
+                muestreo |                               01 |                               01
+                  grabar |                               10 |                               10
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'PS_reg' using encoding 'sequential' in module 'FMS_ADCs_Readings'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    idle |                              000 |                              000
+               load_data |                              001 |                              001
+               send_data |                              010 |                              010
+              wait_start |                              011 |                              011
+              wait_ready |                              100 |                              100
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'UART_features'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:57 ; elapsed = 00:00:59 . Memory (MB): peak = 1945.293 ; gain = 1054.418
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input    9 Bit       Adders := 1     
+	   2 Input    8 Bit       Adders := 11    
+	   2 Input    7 Bit       Adders := 1     
+	   3 Input    6 Bit       Adders := 4     
+	   2 Input    5 Bit       Adders := 12    
+	   2 Input    4 Bit       Adders := 1     
+	   2 Input    3 Bit       Adders := 2     
+	   2 Input    2 Bit       Adders := 1     
++---XORs : 
+	   2 Input      1 Bit         XORs := 6     
++---Registers : 
+	               16 Bit    Registers := 2     
+	               15 Bit    Registers := 20    
+	               10 Bit    Registers := 2     
+	                8 Bit    Registers := 274   
+	                7 Bit    Registers := 1     
+	                5 Bit    Registers := 8     
+	                3 Bit    Registers := 2     
+	                2 Bit    Registers := 2     
+	                1 Bit    Registers := 49    
++---Muxes : 
+	   8 Input   16 Bit        Muxes := 1     
+	   2 Input   15 Bit        Muxes := 4     
+	  11 Input   11 Bit        Muxes := 1     
+	   2 Input   11 Bit        Muxes := 6     
+	   9 Input    9 Bit        Muxes := 1     
+	   2 Input    9 Bit        Muxes := 9     
+	   2 Input    8 Bit        Muxes := 242   
+	  16 Input    8 Bit        Muxes := 172   
+	   6 Input    8 Bit        Muxes := 1     
+	   3 Input    8 Bit        Muxes := 1     
+	   4 Input    8 Bit        Muxes := 2     
+	   5 Input    8 Bit        Muxes := 3     
+	   8 Input    8 Bit        Muxes := 2     
+	   2 Input    5 Bit        Muxes := 4     
+	  16 Input    4 Bit        Muxes := 100   
+	  11 Input    4 Bit        Muxes := 2     
+	   2 Input    3 Bit        Muxes := 3     
+	   5 Input    3 Bit        Muxes := 2     
+	   3 Input    2 Bit        Muxes := 3     
+	   2 Input    2 Bit        Muxes := 13    
+	   2 Input    1 Bit        Muxes := 331   
+	  17 Input    1 Bit        Muxes := 240   
+	  16 Input    1 Bit        Muxes := 16    
+	   3 Input    1 Bit        Muxes := 12    
+	   9 Input    1 Bit        Muxes := 7     
+	   6 Input    1 Bit        Muxes := 3     
+	   4 Input    1 Bit        Muxes := 4     
+	   5 Input    1 Bit        Muxes := 10    
+	   8 Input    1 Bit        Muxes := 7     
+	  11 Input    1 Bit        Muxes := 2     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 90 (col length:60)
+BRAMs: 100 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+WARNING: [Synth 8-7129] Port UART1_RX in module DAQ_digital is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:26 ; elapsed = 00:01:28 . Memory (MB): peak = 1945.293 ; gain = 1054.418
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:35 ; elapsed = 00:01:37 . Memory (MB): peak = 1945.293 ; gain = 1054.418
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:01:57 ; elapsed = 00:02:00 . Memory (MB): peak = 1945.293 ; gain = 1054.418
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-3332] Sequential element (I2C0/i2c/FSM_onehot_state_reg[7]) is unused and will be removed from module DAQ_digital.
+WARNING: [Synth 8-3332] Sequential element (I2C0/i2c/FSM_onehot_state_reg[6]) is unused and will be removed from module DAQ_digital.
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:02:00 ; elapsed = 00:02:03 . Memory (MB): peak = 1945.293 ; gain = 1054.418
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:02:05 ; elapsed = 00:02:08 . Memory (MB): peak = 1945.293 ; gain = 1054.418
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:02:05 ; elapsed = 00:02:08 . Memory (MB): peak = 1945.293 ; gain = 1054.418
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:02:06 ; elapsed = 00:02:09 . Memory (MB): peak = 1945.293 ; gain = 1054.418
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:02:06 ; elapsed = 00:02:09 . Memory (MB): peak = 1945.293 ; gain = 1054.418
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:02:06 ; elapsed = 00:02:09 . Memory (MB): peak = 1945.293 ; gain = 1054.418
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:02:06 ; elapsed = 00:02:09 . Memory (MB): peak = 1945.293 ; gain = 1054.418
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++------+--------------+----------+
+|      |BlackBox name |Instances |
++------+--------------+----------+
+|1     |clk_wiz_0     |         1|
++------+--------------+----------+
+
+Report Cell Usage: 
++------+---------------+------+
+|      |Cell           |Count |
++------+---------------+------+
+|1     |clk_wiz_0_bbox |     1|
+|2     |BUFG           |     3|
+|3     |CARRY4         |    59|
+|4     |LUT1           |    43|
+|5     |LUT2           |   126|
+|6     |LUT3           |    87|
+|7     |LUT4           |   608|
+|8     |LUT5           |    83|
+|9     |LUT6           |   883|
+|10    |MUXF7          |   305|
+|11    |MUXF8          |   144|
+|12    |FDCE           |   105|
+|13    |FDRE           |  2121|
+|14    |FDSE           |    42|
+|15    |LD             |    56|
+|16    |IBUF           |    27|
+|17    |IOBUF          |     1|
+|18    |OBUF           |    34|
+|19    |OBUFT          |     1|
++------+---------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:02:06 ; elapsed = 00:02:09 . Memory (MB): peak = 1945.293 ; gain = 1054.418
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 18 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:01:36 ; elapsed = 00:02:00 . Memory (MB): peak = 1945.293 ; gain = 942.633
+Synthesis Optimization Complete : Time (s): cpu = 00:02:06 ; elapsed = 00:02:09 . Memory (MB): peak = 1945.293 ; gain = 1054.418
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.056 . Memory (MB): peak = 1945.293 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 565 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 1 inverter(s) to 1 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1945.293 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 57 instances were transformed.
+  IOBUF => IOBUF (IBUF, OBUFT): 1 instance 
+  LD => LDCE: 55 instances
+  LD => LDCE (inverted pins: G): 1 instance 
+
+Acceso denegado.
+Synth Design complete | Checksum: 15ff0d3d
+INFO: [Common 17-83] Releasing license: Synthesis
+103 Infos, 26 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:02:11 ; elapsed = 00:02:17 . Memory (MB): peak = 1945.293 ; gain = 1442.500
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.012 . Memory (MB): peak = 1945.293 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/Users/SUPER PC 007/Documents/vivadoproyec/DAQ_Neutrinos3/DAQ_Neutrinos.runs/synth_1/DAQ_digital.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file DAQ_digital_utilization_synth.rpt -pb DAQ_digital_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Wed Dec 25 18:47:06 2024...
