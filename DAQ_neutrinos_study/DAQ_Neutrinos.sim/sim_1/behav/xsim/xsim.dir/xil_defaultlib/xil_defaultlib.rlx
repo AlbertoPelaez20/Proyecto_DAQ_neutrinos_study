@@ -2,10 +2,20 @@
 2020.2
 Oct 13 2023
 20:47:58
+C:/Users/SUPER PC 007/Documents/Proyecto_DAQ_neutrinos_study/DAQ_neutrinos_study/DAQ_Neutrinos.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.v,1734860578,verilog,,,,clk_wiz_0,,,../../../../DAQ_Neutrinos.ip_user_files/ipstatic,,,,,
+C:/Users/SUPER PC 007/Documents/Proyecto_DAQ_neutrinos_study/DAQ_neutrinos_study/DAQ_Neutrinos.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_clk_wiz.v,1734860578,verilog,,C:/Users/SUPER PC 007/Documents/Proyecto_DAQ_neutrinos_study/DAQ_neutrinos_study/DAQ_Neutrinos.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.v,,clk_wiz_0_clk_wiz,,,../../../../DAQ_Neutrinos.ip_user_files/ipstatic,,,,,
 C:/Users/SUPER PC 007/Documents/Proyecto_DAQ_neutrinos_study/DAQ_neutrinos_study/DAQ_Neutrinos.sim/sim_1/behav/xsim/glbl.v,1697210495,verilog,,,,glbl,,,,,,,,
+C:/Users/SUPER PC 007/Documents/Proyecto_DAQ_neutrinos_study/DAQ_neutrinos_study/DAQ_Neutrinos.srcs/sim_1/new/tb_ADCs_modules.vhd,1735337304,vhdl,,,,tb_adcs_modules,,,,,,,,
 C:/Users/SUPER PC 007/Documents/Proyecto_DAQ_neutrinos_study/DAQ_neutrinos_study/DAQ_Neutrinos.srcs/sim_1/new/tb_UART_MATLAB.vhd,1735164817,vhdl,,,,tb_uart_matlab,,,,,,,,
 C:/Users/SUPER PC 007/Documents/Proyecto_DAQ_neutrinos_study/DAQ_neutrinos_study/DAQ_Neutrinos.srcs/sim_1/new/tb_UART_freatures.vhd,1735165860,vhdl,,,,tb_uart_freatures,,,,,,,,
+C:/Users/SUPER PC 007/Documents/Proyecto_DAQ_neutrinos_study/DAQ_neutrinos_study/DAQ_Neutrinos.srcs/sources_1/new/ADCs_modules.vhd,1735159577,vhdl,,,,adcs_modules,,,,,,,,
+C:/Users/SUPER PC 007/Documents/Proyecto_DAQ_neutrinos_study/DAQ_neutrinos_study/DAQ_Neutrinos.srcs/sources_1/new/FMS_ADCs_Readings.vhd,1734908269,vhdl,,,,fms_adcs_readings,,,,,,,,
+C:/Users/SUPER PC 007/Documents/Proyecto_DAQ_neutrinos_study/DAQ_neutrinos_study/DAQ_Neutrinos.srcs/sources_1/new/FMS_SPI_Control.vhd,1734857208,vhdl,,,,fms_spi_control,,,,,,,,
+C:/Users/SUPER PC 007/Documents/Proyecto_DAQ_neutrinos_study/DAQ_neutrinos_study/DAQ_Neutrinos.srcs/sources_1/new/Interface_SPI.vhd,1733283449,vhdl,,,,interface_spi,,,,,,,,
+C:/Users/SUPER PC 007/Documents/Proyecto_DAQ_neutrinos_study/DAQ_neutrinos_study/DAQ_Neutrinos.srcs/sources_1/new/SingleShotPulse.vhd,1735110089,vhdl,,,,singleshotpulse,,,,,,,,
 C:/Users/SUPER PC 007/Documents/Proyecto_DAQ_neutrinos_study/DAQ_neutrinos_study/DAQ_Neutrinos.srcs/sources_1/new/UART_MATLAB.vhd,1735159025,vhdl,,,,uart_matlab,,,,,,,,
 C:/Users/SUPER PC 007/Documents/Proyecto_DAQ_neutrinos_study/DAQ_neutrinos_study/DAQ_Neutrinos.srcs/sources_1/new/UART_TX.vhd,1709226384,vhdl,,,,uart_tx,,,,,,,,
 C:/Users/SUPER PC 007/Documents/Proyecto_DAQ_neutrinos_study/DAQ_neutrinos_study/DAQ_Neutrinos.srcs/sources_1/new/UART_features.vhd,1735159751,vhdl,,,,uart_features,,,,,,,,
+C:/Users/SUPER PC 007/Documents/Proyecto_DAQ_neutrinos_study/DAQ_neutrinos_study/DAQ_Neutrinos.srcs/sources_1/new/contador1.vhd,1724563723,vhdl,,,,contador1,,,,,,,,
 C:/Users/SUPER PC 007/Documents/Proyecto_DAQ_neutrinos_study/DAQ_neutrinos_study/DAQ_Neutrinos.srcs/sources_1/new/memory_buffer.vhd,1734538107,vhdl,,,,memory_buffer,,,,,,,,
+C:/Users/SUPER PC 007/Documents/Proyecto_DAQ_neutrinos_study/DAQ_neutrinos_study/DAQ_Neutrinos.srcs/sources_1/new/timer.vhd,1734907837,vhdl,,,,timer,,,,,,,,
