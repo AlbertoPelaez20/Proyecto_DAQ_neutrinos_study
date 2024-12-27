@@ -2,3 +2,6 @@ Running: xsim.dir/tb_UART_freatures_behav/xsimk.exe -simmode gui -wdb tb_UART_fr
 Design successfully loaded
 Design Loading Memory Usage: 7980 KB (Peak: 7980 KB)
 Design Loading CPU Usage: 15 ms
+Simulation completed
+Simulation Memory Usage: 16604 KB (Peak: 16604 KB)
+Simulation CPU Usage: 858 ms
