@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1735170433">
+<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1735269060">
   <File Type="ROUTE-PWR" Name="DAQ_digital_power_routed.rpt"/>
   <File Type="PA-TCL" Name="DAQ_digital.tcl"/>
   <File Type="ROUTE-PWR-SUM" Name="DAQ_digital_power_summary_routed.pb"/>
@@ -18,10 +18,14 @@
   <File Type="BITSTR-MMI" Name="DAQ_digital.mmi"/>
   <File Type="ROUTE-METHODOLOGY-DRC" Name="DAQ_digital_methodology_drc_routed.rpt"/>
   <File Type="BITSTR-SYSDEF" Name="DAQ_digital.sysdef"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="DAQ_digital_methodology_drc_routed.pb"/>
   <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
   <File Type="BITSTR-LTX" Name="DAQ_digital.ltx"/>
+  <File Type="BOOT-PDI-FILE" Name="DAQ_digital_boot.pdi"/>
   <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
+  <File Type="NPI_FILE" Name="DAQ_digital.npi"/>
   <File Type="OPT-DRC" Name="DAQ_digital_drc_opted.rpt"/>
+  <File Type="RBD_FILE" Name="DAQ_digital.rbd"/>
   <File Type="OPT-HWDEF" Name="DAQ_digital.hwdef"/>
   <File Type="PLACE-IO" Name="DAQ_digital_io_placed.rpt"/>
   <File Type="PLACE-UTIL" Name="DAQ_digital_utilization_placed.rpt"/>
@@ -55,17 +59,13 @@
   <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="DAQ_digital_timing_summary_postroute_physopted.rpx"/>
   <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="DAQ_digital_bus_skew_postroute_physopted.rpt"/>
   <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="DAQ_digital_bus_skew_postroute_physopted.rpx"/>
-  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="DAQ_digital_methodology_drc_routed.pb"/>
   <File Type="ROUTE-DRC-RPX" Name="DAQ_digital_drc_routed.rpx"/>
   <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="DAQ_digital_methodology_drc_routed.rpx"/>
   <File Type="PDI-FILE" Name="DAQ_digital.pdi"/>
-  <File Type="BOOT-PDI-FILE" Name="DAQ_digital_boot.pdi"/>
   <File Type="PL-PDI-FILE" Name="DAQ_digital_pld.pdi"/>
   <File Type="RCFI_FILE" Name="DAQ_digital.rcfi"/>
   <File Type="CFI_FILE" Name="DAQ_digital.cfi"/>
   <File Type="RNPI_FILE" Name="DAQ_digital.rnpi"/>
-  <File Type="NPI_FILE" Name="DAQ_digital.npi"/>
-  <File Type="RBD_FILE" Name="DAQ_digital.rbd"/>
   <File Type="ROUTE-RQS" Name="DAQ_digital_routed.rqs"/>
   <File Type="POSTROUTE-PHYSOPT-RQS" Name="DAQ_digital_postroute_physopted.rqs"/>
   <File Type="ROUTE-RQS-RPT" Name="route_report_qor_suggestions_0.rpt"/>
@@ -228,7 +228,6 @@
     </Step>
     <Step Id="post_route_phys_opt_design"/>
     <Step Id="write_bitstream"/>
-    <Step Id="write_device_image"/>
   </Strategy>
   <BlockFileSet Type="BlockSrcs" Name="clk_wiz_0"/>
 </GenRun>

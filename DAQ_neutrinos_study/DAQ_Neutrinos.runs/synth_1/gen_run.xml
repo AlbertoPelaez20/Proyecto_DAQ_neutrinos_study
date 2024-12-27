@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1735170269" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/DAQ_digital.dcp">
+<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1735269060" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/DAQ_digital.dcp">
   <File Type="PA-TCL" Name="DAQ_digital.tcl"/>
   <File Type="REPORTS-TCL" Name="DAQ_digital_reports.tcl"/>
   <File Type="RDS-RDS" Name="DAQ_digital.vds"/>

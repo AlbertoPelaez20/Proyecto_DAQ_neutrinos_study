@@ -1,0 +1,7 @@
+Running: xsim.dir/tb_UART_MATLAB_behav/xsimk.exe -simmode gui -wdb tb_UART_MATLAB_behav.wdb -simrunnum 0 -socket 49883
+Design successfully loaded
+Design Loading Memory Usage: 8016 KB (Peak: 8016 KB)
+Design Loading CPU Usage: 62 ms
+Simulation completed
+Simulation Memory Usage: 16648 KB (Peak: 16648 KB)
+Simulation CPU Usage: 1468 ms
