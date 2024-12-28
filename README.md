@@ -62,7 +62,7 @@ Acontinuacion se muestra un diagrama de tiempo donde se ve la secuencia de activ
 
 El diagrama de la maquina de estados para el proceso de almacenamiento de los valores leidos es el siguiente:
 
-![App Screenshot](https://github.com/AlbertoPelaez20/Proyecto_DAQ_neutrinos_study/blob/main/imagenes/maquina_de_estados_2.jpg?raw=true)
+![App Screenshot](https://github.com/AlbertoPelaez20/Proyecto_DAQ_neutrinos_study/blob/main/imagenes/maquina22.jpg?raw=true)
 
 Este proceso detecta cuando el ADC #8 ha realizado una conversión, completando así una secuencia de conversión de 8 muestras (desde la 1 hasta la 8). En ese momento, se procede a grabar los 8 valores en la memoria y luego se espera a que la secuencia se repita. Este proceso se mantiene activo durante el tiempo que el disparo del trigger permanezca activado.
 
