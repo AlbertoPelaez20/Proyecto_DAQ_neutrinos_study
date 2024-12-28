@@ -41,6 +41,11 @@ El DAQ tiene varios componentes tal y como se ve en el [diagrama2](https://githu
 ![App Screenshot](https://github.com/AlbertoPelaez20/Proyecto_DAQ_neutrinos_study/blob/main/imagenes/ADC_proto_v1_esquematico.jpg?raw=true)
 
 
+**ADC_proto_v1 implementacion**
+
+![App Screenshot](https://github.com/AlbertoPelaez20/Proyecto_DAQ_neutrinos_study/blob/main/imagenes/ADC_proto_v1PCB2.jpg?raw=true)
+
+
 ## Componente ADCs_modules.vhd
 
 Este módulo cuenta con dos máquinas de estados. La **FMS_SPI_Control.vhd** se encarga de la secuencia de activación de los ADCs, así como de la lectura y almacenamiento de los valores de conversión en 8 registros de desplazamiento. Cuando el disparo del trigger active el proceso de medición, la máquina de estados **FMS_ADCs_Readings.vhd** tomará los valores almacenados en estos registros para enviarlos a la memoria, siempre que detecte que los 8 registros han trabajado de manera secuencial. Esto significa que, al detectar que el ADC número 8 ha finalizado su conversión, se iniciará el proceso de grabación en la memoria.
@@ -387,10 +392,118 @@ Para las pruebas se utiliza un PSOC para  generar las señales a medir. Para una
 
 La señal generada se puede ver con un osciloscopio digital Hantek 6022BE 
 
+![App Screenshot](https://github.com/AlbertoPelaez20/Proyecto_DAQ_neutrinos_study/blob/main/imagenes/osciloscopedigital2.jpg?raw=true) 
+
+
 ![App Screenshot](https://github.com/AlbertoPelaez20/Proyecto_DAQ_neutrinos_study/blob/main/imagenes/oscilsocopio.jpg?raw=true
 ) 
 
+
 El disparo del trigger identifica como la señal de amarillo, el muestreo y conversion de datos debe comenzar el tiempo que esta señal este en alto.
+
+
+
+**scrip en MATLAB para la recepcion ploteo de datos por UART** 
+
+```bash
+% Crear el objeto serial
+serialObj = serialport("COM5", 9600);  % Ajusta el puerto y baudrate según tu configuración
+configureTerminator(serialObj, "LF");  % Configura el terminador si es necesario
+
+% Inicializa variables
+num_bytes = 240;  % Número de bytes a recibir (240 bytes)
+datos_utiles = [];  % Para almacenar los datos útiles
+
+% Leer los bytes recibidos desde el puerto serial
+disp("Esperando datos...");
+received_data = read(serialObj, num_bytes, "uint8");  % Leer 240 bytes
+
+% Mostrar los bytes recibidos para verificar
+disp("Bytes recibidos:");
+disp(received_data); 
+
+% Conversión de los datos recibidos a valores de ADC (120 mediciones de 12 bits)
+num_measurements = num_bytes / 2;  % 120 mediciones (cada medición tiene 2 bytes)
+adc_values = zeros(1, num_measurements);  % Crear un array para almacenar los valores de 120 mediciones
+
+for i = 1:2:length(received_data)
+    high_byte = received_data(i);         % Byte alto del ADC
+    low_byte = received_data(i + 1);      % Byte bajo del ADC
+    adc_values(ceil(i / 2)) = bitshift(high_byte, 8) + low_byte;  % Combinar los bytes
+end
+
+% Mostrar los valores ADC
+disp("Valores ADC:");
+disp(adc_values);
+
+% Convertir a voltajes considerando 3.3V y 12 bits (4096 pasos)
+voltajes = (adc_values / 4096) * 3.3;
+
+% Mostrar los voltajes calculados
+disp("Voltajes:");
+disp(voltajes);
+clear serialObj;
+
+% Gráficas
+t_m = 1; % 10 ms
+tiempo1 = 0:t_m:((length(voltajes) * t_m) - t_m);
+
+figure;
+subplot(2,1,1)
+plot(tiempo1, voltajes, '-o');
+ylim([0 4]);  % Establecer el rango del eje Y de 0 a 3.4V
+title('Voltajes de los ADC');
+xlabel('Número de muestra'); ylabel('Voltaje (V)'); % Label axis
+xticks(0:119);
+grid on;
+grid minor;
+
+subplot(2,1,2)
+
+bar(voltajes);
+title('Voltajes de los ADC');
+xlabel('Número de muestra');
+ylabel('Voltaje (V)');
+xticks(1:120);
+ylim([0 4]);  % Establecer el rango del eje Y de 0 a 3.4V
+grid on;
+grid minor;
+
+```
+**Scrip para recibir  por UART en el arduino los datos de voltaje PICO y tiempo de subida** 
+
+
+```bash
+#include <SoftwareSerial.h>
+
+#define rxPin 10
+#define txPin 11
+
+// Configuración del objeto SoftwareSerial
+SoftwareSerial mySerial(rxPin, txPin);
+
+void setup() {
+    // Definir los modos de pin para TX y RX
+    pinMode(rxPin, INPUT);
+    pinMode(txPin, OUTPUT);
+    
+    // Configurar las tasas de baudios para mySerial y Serial
+    mySerial.begin(9600);
+    Serial.begin(9600); // Abrir el puerto serie a 9600 bps
+}
+
+void loop() {
+    // Verificar si hay datos disponibles en mySerial
+    if (mySerial.available() > 0) {
+        // Leer el dato recibido
+        int receivedByte = mySerial.read();
+        
+        // Imprimir el dato recibido en formato hexadecimal en el monitor serial
+        Serial.print("Received: 0x");
+        Serial.println(receivedByte, HEX);
+    }
+}
+```
 
 Una vez que activamos el muestreo con los pulsadores de la basys3 y enviamos los datos obtenidos por UART a MATLAB, obtenemos los siguientes resultados: 
 
@@ -466,14 +579,30 @@ Señal generada :
 ![App Screenshot](https://github.com/AlbertoPelaez20/Proyecto_DAQ_neutrinos_study/blob/main/imagenes/oscilocopediente80micro.jpg?raw=true
 ) 
 
+
+
 Datos muestreados y graficados en MATLAB: 
 
 ![App Screenshot](https://github.com/AlbertoPelaez20/Proyecto_DAQ_neutrinos_study/blob/main/imagenes/dientedesierramatlab80micro.jpg?raw=true) 
 
 Para 60 us se necesitaran: (80/4.6)x8 =  aproximadamente 139 muestras, como se tiene un máximo de 120 se juega con el trigger ya que no se vería toda la señal en la grafica. Viendo la gradfica del osciloscopio , requiere de un tiempo de subida de 60 us por lo que se necesitaría (60/4.6)x8 = 104 muestras, un valor muy aproximado con lo que obtenemos con el fpga el cual determina que el pico se alcanza en la muestra 102.
 
+## Implementacion del sistema
 
+Para las mediciones se usaron tanto un osciloscopio digital ( Hantek6022BE), como un oscilocopio analogico ( PHILIPS PM 3206 15 MHz)
 
+![App Screenshot](https://github.com/AlbertoPelaez20/Proyecto_DAQ_neutrinos_study/blob/main/imagenes/implementacion_partes.jpg?raw=true) 
+
+Señal generada por el PSoc vista desde el oscilsocopio analógico
+
+![App Screenshot](https://github.com/AlbertoPelaez20/Proyecto_DAQ_neutrinos_study/blob/main/imagenes/osciloscopioanalogico.jpg?raw=true) 
+
+Basys 3 con el DAQ_digital implementado ( Los leds indican que los ADCs estan en funcionamiento) 
+
+![App Screenshot](https://github.com/AlbertoPelaez20/Proyecto_DAQ_neutrinos_study/blob/main/imagenes/basys3_implementacion.jpg?raw=true) 
+
+PSoC usado para generar la señal a muestrear
+![App Screenshot](https://github.com/AlbertoPelaez20/Proyecto_DAQ_neutrinos_study/blob/main/imagenes/psoc_impleentacion2.jpg?raw=true) 
 
 
 ## Tech Stack
