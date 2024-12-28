@@ -25,13 +25,13 @@ El DAQ también es capaz de procesar los datos muestreados para extraer dos cara
 El proceso de conversión y almacenamiento de datos comienza con una señal de disparo generada a partir de la comparación entre el voltaje de entrada y un voltaje de referencia configurado por el DAC MCP4725. Esta configuración se realiza a través del DAQ utilizando un módulo I2C. De esta manera, es posible determinar con precisión el momento en que inicia la conversión de los datos muestreados y cuándo concluye. Se usaran los pulsadores y los switches de la basys 3 para iniciar el proceso de muestreo y setear el DAC.
 
 
-![App Screenshot](https://github.com/AlbertoPelaez20/Proyecto_DAQ_neutrinos_study/blob/main/imagenes/UTEC%20Neutrino%20detector%20design%20-%20v1.jpg?raw=true)
+![App Screenshot](https://github.com/AlbertoPelaez20/Proyecto_DAQ_neutrinos_study/blob/main/imagenes/UTEC%20Neutrino%20detector%20design%20-%20v2.jpg?raw=true)
 
 El diseño tendra que basarse en el siguiente diagrama de bloques ya que formara parte de un proyecto mas grande.Por eso, se tendra que considerar el nombre de las entradas y el numero de ellas, en especial las que hacen referencia a los ADCs como CSadc, ENmux y SEmux.
 
 ## Bloques y partes del DAQ 
 
-El DAQ tiene varios componentes tal y como se ve en el [diagrama2](https://github.com/AlbertoPelaez20/Proyecto_DAQ_neutrinos_study/blob/main/imagenes/diagrama2.jpg?raw=true). Los principales son el ADCs_modules y el feature_extraction. El primero se encarga de sincronizar la secuencia de activacion y habilitacion de los 8 ADCs y tambien de almacenar los datos de muestreo en la memoria durante todo el ciclo de disparo del trigger. El segundo, se encargar de procesar los datos almacenados para detectar el voltaje PICO y el tiempo de subida de la señal.
+El DAQ tiene varios componentes tal y como se ve en el [diagrama2](https://github.com/AlbertoPelaez20/Proyecto_DAQ_neutrinos_study/blob/main/imagenes/d2.jpg?raw=true). Los principales son el ADCs_modules y el feature_extraction. El primero se encarga de sincronizar la secuencia de activacion y habilitacion de los 8 ADCs y tambien de almacenar los datos de muestreo en la memoria durante todo el ciclo de disparo del trigger. El segundo, se encargar de procesar los datos almacenados para detectar el voltaje PICO y el tiempo de subida de la señal.
 
 
 ![App Screenshot](https://github.com/AlbertoPelaez20/Proyecto_DAQ_neutrinos_study/blob/main/imagenes/d2.jpg?raw=true)
@@ -72,35 +72,296 @@ Este proceso detecta cuando el ADC #8 ha realizado una conversión, completando 
 
 En el siguiente TestBench se puede ver el funcionamiento del ADCs_modules.vhd. se puede ver las etapas de las máquinas de estado en color celeste y blanco. Se puede observar la secuencia de activacion de los 8 ADCs en los 4 modulos SPI.
 
+```bash
+-- ========================================================
+-- TESTBENCH DEL BLOQUE ADCs_modules
+-- ========================================================
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+-- ========================================================
+-- ENTIDAD DEL TESTBENCH
+-- ========================================================
+entity tb_ADCs_modules is
+end tb_ADCs_modules;
+
+-- ========================================================
+-- ARQUITECTURA DEL TESTBENCH
+-- ========================================================
+architecture Behavioral of tb_ADCs_modules is
+
+    -- ============================
+    -- COMPONENTE ADCs_modules
+    -- ============================
+    component ADCs_modules is
+        Port (
+            ONN, RESET, CLK, ONN2                 : in std_logic;      
+            SELEC                                 : in std_logic_vector (2 downto 0);       
+            GUARDAR, puntero_reset, READY         : out std_logic;
+            BUS_CS                                : out std_logic_vector (7 downto 0);
+            BUS_MUL                               : out std_logic_vector (3 downto 0);
+            SCLK_1, SCLK_2, SCLK_3, SCLK_4        : out std_logic;
+            SDO_1, SDO_2, SDO_3, SDO_4            : in std_logic;
+            led                                   : out std_logic_vector (15 downto 0);
+            sample_ADC1, sample_ADC2              : out std_logic_vector (14 downto 0);
+            sample_ADC3, sample_ADC4              : out std_logic_vector (14 downto 0);
+            sample_ADC5, sample_ADC6              : out std_logic_vector (14 downto 0);
+            sample_ADC7, sample_ADC8              : out std_logic_vector (14 downto 0)
+        );
+    end component;
+
+    -- ============================
+    -- SEÑALES INTERNAS
+    -- ============================
+    signal ONN_S, RESET_S, CLK_S : std_logic;
+
+-- ========================================================
+-- CUERPO PRINCIPAL
+-- ========================================================
+begin
+
+    -- ============================================
+    -- INSTANCIA DEL COMPONENTE ADCs_modules
+    -- ============================================
+    UUT: ADCs_modules 
+        port map (
+            ONN      => '1',
+            ONN2     => ONN_S,
+            RESET    => RESET_S,
+            SELEC    => "000", 
+            SDO_1    => '1',  
+            SDO_2    => '1',
+            SDO_3    => '1',
+            SDO_4    => '1',               
+            CLK      => CLK_S
+        );
+
+    -- ============================================
+    -- GENERACIÓN DEL RELOJ
+    -- ============================================
+    clock_gen: process
+    begin
+        CLK_S <= '0';
+        wait for 5 ns;
+        CLK_S <= '1';
+        wait for 5 ns;
+    end process;
+
+    -- ============================================
+    -- PROCESO DE CONTROL DE SEÑALES
+    -- ============================================
+    control_signals: process
+    begin
+        ONN_S <= '0';
+        RESET_S <= '0';
+        wait for 20 us;
+
+        ONN_S <= '1';
+        RESET_S <= '0';
+        wait for 10 us;
+
+        ONN_S <= '0';
+        RESET_S <= '0';
+        wait for 10 us;
+    end process;
+
+end Behavioral;
+```
+
 ![App Screenshot](https://github.com/AlbertoPelaez20/Proyecto_DAQ_neutrinos_study/blob/main/imagenes/tb1.jpg?raw=true)
+
+Se puede observar la habilitacion secuencial de cada ADCs, en este caso por las señales CS (CHIP SELECT) en color rojo que pasan de hight a low. Los timers habilitan cada módulo SPI cuadno a pasado el tiempo necesario, en este caso se a seteado a 16 pulsos de reloj y se puede observar como las señales de color morado. 
+
+**Trama I2C de test para probar la comunicacion con el MCP4725**
+
+La maquina de estados de este modulo implementado esta basado en el siguiente trabajo [I2C Master (VHDL)](https://forum.digikey.com/t/i2c-master-vhdl/12797).  La maquina de estados esta diseñada para mandar 3 bytes segun lo indica la hoJa de datos del MCP4725.
+
+Para el envio de datos, el primer byte enviado debe contener el codigo y la dirección del dispositivo que por defecto es 1100 y 000 por defecto. 
+
+![App Screenshot](https://github.com/AlbertoPelaez20/Proyecto_DAQ_neutrinos_study/blob/main/imagenes/i2c.jpg?raw=true)
+
+
+Para setear el voltaje de salida del DAC, ademas del primer byte de direccionamiento hay que enviar 2 bytes mas. el 2do byte debe contener el modo de escritura y de consumo de energia en el nibble superior. A partir del nibble inferior y considerando el 3er byte, estos 12 bits representan el valor de salida del DAC.
+
+![App Screenshot](https://github.com/AlbertoPelaez20/Proyecto_DAQ_neutrinos_study/blob/main/imagenes/tramai2c.jpg?raw=true)
+
 
 **Simulacion del Interface_DAC.vhd**
 
-La maquina de estados de este modulo implementado esta basado en el siguiente trabajo [I2C Master (VHDL)](https://forum.digikey.com/t/i2c-master-vhdl/12797)  : 
+Para la simulacion se considera el siguiente TestBench, donde el voltaje de salida que se quiere setear esta definido por la entrada SW, que para efectos de prueba en este caso es de "100100001111".
 
-![App Screenshot](https://github.com/AlbertoPelaez20/Proyecto_DAQ_neutrinos_study/blob/main/imagenes/machinestatei2c.jpeg?raw=true)
+```bash
+-- ========================================================
+-- TESTBENCH DEL MÓDULO Interface_DAC
+-- ========================================================
 
-Estos fueron los resultados del TestBench y de las pruebas con el analizador de señales.
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
 
-**TestBench**
+-- ========================================================
+-- ENTIDAD DEL TESTBENCH
+-- ========================================================
+entity tb_Interface_DAC is
+end tb_Interface_DAC;
+
+-- ========================================================
+-- ARQUITECTURA DEL TESTBENCH
+-- ========================================================
+architecture Behavioral of tb_Interface_DAC is
+
+    -- ============================================
+    -- COMPONENTE A PROBAR: Interface_DAC
+    -- ============================================
+    component Interface_DAC is
+        Port (
+            ONN, RESET        : in std_logic;
+            CLK               : in std_logic;
+            SW                : in std_logic_vector(11 downto 0);
+            SDA1, SCL1        : inout std_logic
+        );
+    end component;
+
+    -- ============================================
+    -- SEÑALES INTERNAS
+    -- ============================================
+    signal on_s, clk_s, reset_s, SDA1, SCL1 : std_logic;
+
+-- ========================================================
+-- CUERPO PRINCIPAL
+-- ========================================================
+begin
+
+    -- ============================================
+    -- INSTANCIA DEL COMPONENTE Interface_DAC
+    -- ============================================
+    UUT: Interface_DAC
+        port map (
+            ONN      => on_s,
+            RESET    => reset_s,
+            CLK      => clk_s,
+            SW       => "100100001111",
+            SDA1     => SDA1,
+            SCL1     => SCL1
+        );
+
+    -- ============================================
+    -- GENERACIÓN DEL RELOJ
+    -- ============================================
+    clock_gen: process
+    begin
+        clk_s <= '0';
+        wait for 5 ns;
+        clk_s <= '1';
+        wait for 5 ns;
+    end process;
+
+    -- ============================================
+    -- PROCESO DE CONTROL DE SEÑALES
+    -- ============================================
+    control_signals: process
+    begin
+        -- Estado inicial
+        on_s    <= '0';
+        reset_s <= '0';
+        wait for 10 ns;
+
+        -- Activar ONN
+        on_s    <= '1';
+        reset_s <= '0';
+        wait for 550 ns;
+
+        -- Desactivar ONN
+        on_s    <= '0';
+        reset_s <= '0';
+        wait for 9 ms;
+    end process;
+
+end Behavioral;
+```
+Estos fueron los resultados del TestBench, se puede ver como la trama contiene los 3 bytes en la señal SDA1.
 
 ![App Screenshot](https://github.com/AlbertoPelaez20/Proyecto_DAQ_neutrinos_study/blob/main/imagenes/tb_i2c.jpg?raw=true)
 
 
 **TestBench del modulo UART2 para envio de voltaje PICO y tiempo de subida**
 
+```bash
+-- ========================================================
+-- TESTBENCH DE PRUEDA DEL MODULO UART_features 
+-- ========================================================
+-- prueba del modulo de envio de caracteristicas por UART
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+
+entity tb_UART_freatures is
+--  Port ( );
+end tb_UART_freatures;
+
+architecture Behavioral of tb_UART_freatures is
+
+-- modulo uart para el envio de voltaje Pico y # de muestra
+  component UART_features is
+    Port ( SEND_1, CLK        : in  std_logic;
+           NH_ADC, NL_ADC     : in  std_logic_vector(7 downto 0);
+           numero_de_muestra  : in  std_logic_vector(7 downto 0);
+           UART_TX_o_1        : out std_logic);
+  end component;
+  signal btn_UART2,clk_s,UART2_TX: std_logic := '0';
+begin
+
+ -- Instanciación del segundo transmisor UART
+  UART02 : UART_features
+    port map (
+      SEND_1              => btn_UART2,
+      CLK                 => clk_s,
+      NH_ADC              => x"01",
+      NL_ADC              => x"FF",
+      numero_de_muestra   => x"A0",
+      UART_TX_o_1         => UART2_TX
+    );
+    
+clock_generate: process
+    begin
+        clk_s <= '0';
+        wait for 5ns ;
+        clk_s <= '1';
+    wait for 5ns ;
+end process;     
+
+Control : process
+  begin
+ btn_UART2  <= '0';
+ wait for 10ns ;
+ btn_UART2     <='1';
+ wait for 550ns ;
+ btn_UART2     <='0';
+ wait for 9000000ns ;             
+end process; 
+
+end Behavioral;
+
+```
+Como se puede ver en la simulacion, se envian  los bytes x"01", x"FF" y x"A0", esto se ve en señal UART2_TX en azul.
+
 ![App Screenshot](https://github.com/AlbertoPelaez20/Proyecto_DAQ_neutrinos_study/blob/main/imagenes/tbuartfrea.jpg?raw=true)
 
 
 **TestBench del modulo UART1 para envio datos a MATLAB**
 
+Para el envio de datos desde la memoria no se puede apreciar porque el tiempo de simulacion es muy largo, no obstante se alcanza a ver que se envia los primeros bytes que son : x"0a",x"A0",x"0b",x"b0",x"FF", x"Fa" en la trama de la señal UART1_TX
+
+
 ![App Screenshot](https://github.com/AlbertoPelaez20/Proyecto_DAQ_neutrinos_study/blob/main/imagenes/tbuartmatlab.jpg?raw=true)
 
 **TestBench del modulo feature_extraction para extraer voltaje PICO y tiempo de subida**
 
+Para la prueba de extraccion del voltaje pico y el tiempo de subida se usa una memoria con los datos pregrabados : x"0a",x"A0",x"0b",x"b0",x"FF", x"Fa",x"0B",x"FF",x"FF",x"FF",x"0a",x"A0". En este caso el los valores d evoltaje se toman juntado 2 bytes consecutivos, por ende el primer valor de voltaje en hexadecimal es 0AA0, el segundo es 0BB0 y asi hasta 0aa0. Por otro lado el número de muestra se toma de la direccion del segundo byte que corresponde al valor pico, luego se le suman 1 y se divide por 2. Según los datos que hay preguardados en la memoria, el valor pico seria FFFF ( direccion1= 08, direccion2= 09) y le corresponderia a la muestra numero 5  (( direccion2 +1) / 2 ). Los resultados se pueden ver la señal MAXPICO de morado y muestra_n de rojo.
+
 ![App Screenshot](https://github.com/AlbertoPelaez20/Proyecto_DAQ_neutrinos_study/blob/main/imagenes/tv2.jpg?raw=true
 ) 
-
 
 **PRUEBAS CON EL DAQ IMPLEMENTADO EN LA BASYS 3**
 
@@ -108,10 +369,13 @@ Estos fueron los resultados del TestBench y de las pruebas con el analizador de 
 
 Para las pruebas se utiliza un PSOC para  generar las señales a medir. Para una señal senoidal de periodo 80us la configuracion es la siguiente: 
 
+![App Screenshot](https://github.com/AlbertoPelaez20/Proyecto_DAQ_neutrinos_study/blob/main/imagenes/psocusado.jpg?raw=true
+) 
+
 ![App Screenshot](https://github.com/AlbertoPelaez20/Proyecto_DAQ_neutrinos_study/blob/main/imagenes/psoconda.jpg?raw=true
 ) 
 
-La señal generada se puede ver con un osciloscopio digital asi como se muestra aocntinuacion: 
+La señal generada se puede ver con un osciloscopio digital Hantek 6022BE 
 
 ![App Screenshot](https://github.com/AlbertoPelaez20/Proyecto_DAQ_neutrinos_study/blob/main/imagenes/oscilsocopio.jpg?raw=true
 ) 
@@ -212,5 +476,4 @@ Para 60 us se necesitaran: (80/4.6)x8 =  aproximadamente 139 muestras, como se t
 ## Documentation
 
 [Documentation](https://github.com/AlbertoPelaez20/Proyecto_DAQ_neutrinos_study/tree/main/Datasheeds)
-
 
