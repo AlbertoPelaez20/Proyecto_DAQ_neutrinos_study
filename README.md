@@ -470,6 +470,41 @@ grid on;
 grid minor;
 
 ```
+**Scrip para recibir  por UART en el arduino los datos de voltaje PICO y tiempo de subida** 
+
+
+```bash
+#include <SoftwareSerial.h>
+
+#define rxPin 10
+#define txPin 11
+
+// Configuración del objeto SoftwareSerial
+SoftwareSerial mySerial(rxPin, txPin);
+
+void setup() {
+    // Definir los modos de pin para TX y RX
+    pinMode(rxPin, INPUT);
+    pinMode(txPin, OUTPUT);
+    
+    // Configurar las tasas de baudios para mySerial y Serial
+    mySerial.begin(9600);
+    Serial.begin(9600); // Abrir el puerto serie a 9600 bps
+}
+
+void loop() {
+    // Verificar si hay datos disponibles en mySerial
+    if (mySerial.available() > 0) {
+        // Leer el dato recibido
+        int receivedByte = mySerial.read();
+        
+        // Imprimir el dato recibido en formato hexadecimal en el monitor serial
+        Serial.print("Received: 0x");
+        Serial.println(receivedByte, HEX);
+    }
+}
+```
+
 Una vez que activamos el muestreo con los pulsadores de la basys3 y enviamos los datos obtenidos por UART a MATLAB, obtenemos los siguientes resultados: 
 
 ![App Screenshot](https://github.com/AlbertoPelaez20/Proyecto_DAQ_neutrinos_study/blob/main/imagenes/matlab_muestreo.jpg?raw=true) 
@@ -580,5 +615,4 @@ PSoC usado para generar la señal a muestrear
 ## Documentation
 
 [Documentation](https://github.com/AlbertoPelaez20/Proyecto_DAQ_neutrinos_study/tree/main/Datasheeds)
-
 
