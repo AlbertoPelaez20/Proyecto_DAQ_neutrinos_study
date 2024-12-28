@@ -33,8 +33,13 @@ El diseño tendra que basarse en el siguiente diagrama de bloques ya que formara
 
 El DAQ tiene varios componentes tal y como se ve en el [diagrama2](https://github.com/AlbertoPelaez20/Proyecto_DAQ_neutrinos_study/blob/main/imagenes/d2.jpg?raw=true). Los principales son el ADCs_modules y el feature_extraction. El primero se encarga de sincronizar la secuencia de activacion y habilitacion de los 8 ADCs y tambien de almacenar los datos de muestreo en la memoria durante todo el ciclo de disparo del trigger. El segundo, se encargar de procesar los datos almacenados para detectar el voltaje PICO y el tiempo de subida de la señal.
 
-
+**Diagrama de bloques del DAQ_digital implementado en la basys3**
 ![App Screenshot](https://github.com/AlbertoPelaez20/Proyecto_DAQ_neutrinos_study/blob/main/imagenes/d2.jpg?raw=true)
+
+**Esquematico de la tarjeta ADC_proto_v1**
+
+![App Screenshot](https://github.com/AlbertoPelaez20/Proyecto_DAQ_neutrinos_study/blob/main/imagenes/ADC_proto_v1_esquematico.jpg?raw=true)
+
 
 ## Componente ADCs_modules.vhd
 
@@ -282,6 +287,11 @@ end Behavioral;
 Estos fueron los resultados del TestBench, se puede ver como la trama contiene los 3 bytes en la señal SDA1.
 
 ![App Screenshot](https://github.com/AlbertoPelaez20/Proyecto_DAQ_neutrinos_study/blob/main/imagenes/tb_i2c.jpg?raw=true)
+
+Resultados obtenidos del analizador de señales
+
+![App Screenshot](https://github.com/AlbertoPelaez20/Proyecto_DAQ_neutrinos_study/blob/main/imagenes/ANALIZADORI2C.jpg?raw=true)
+
 
 
 **TestBench del modulo UART2 para envio de voltaje PICO y tiempo de subida**
